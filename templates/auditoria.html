@@ -75,7 +75,11 @@ const STR = {
     method_p1:"El sistema calcula un porcentaje de alineación (izquierda/derecha) a partir de patrones léxicos, marcos narrativos y énfasis temáticos detectados en el texto.",
     method_p2:"Se utiliza un modelo de lenguaje (LLM) para generar un JSON con: alineación, justificación breve, palabras clave y frases potencialmente sesgadas.",
     bias_check:"Criterios de Sesgo",
-    bias_list:"",
+    bias_list:`<li>Uso de adjetivos calificativos con carga emocional.</li>
+<li>Construcciones que sugieren causalidad sin evidencia.</li>
+<li>Generalizaciones sobre actores políticos o sociales.</li>
+<li>Marcos semánticos ideológicos persistentes.</li>
+<li>Selección de fuentes con orientación explícita.</li>`,
     limits:"Limitaciones",
     limits_p1:"El análisis depende del texto de origen: titulares sensacionalistas o citas fuera de contexto influyen en el resultado.",
     limits_p2:"El LLM puede cometer errores de interpretación; por ello se recomienda la verificación humana y la comparación con otras fuentes.",
@@ -91,7 +95,11 @@ const STR = {
     method_p1:"The system computes a left/right alignment percentage based on lexical patterns, narrative frames and thematic emphasis detected in the text.",
     method_p2:"A large language model (LLM) returns a JSON with: alignment, a short justification, keywords and potentially biased phrases.",
     bias_check:"Bias Checks",
-    bias_list:"",
+    bias_list:`<li>Uso de adjetivos calificativos con carga emocional.</li>
+<li>Construcciones que sugieren causalidad sin evidencia.</li>
+<li>Generalizaciones sobre actores políticos o sociales.</li>
+<li>Marcos semánticos ideológicos persistentes.</li>
+<li>Selección de fuentes con orientación explícita.</li>`,
     limits:"Limitations",
     limits_p1:"The analysis depends on the source text: sensationalist headlines or decontextualized quotes affect the outcome.",
     limits_p2:"The LLM may misinterpret content; human verification and comparison with other sources is recommended.",
@@ -106,7 +114,8 @@ function applyLang(){
   document.documentElement.lang = LANG;
   document.querySelectorAll("[data-i18n]").forEach(el=>{
     const key = el.getAttribute("data-i18n");
-    if(STR[LANG][key]!==undefined) el.textContent = STR[LANG][key];
+    if(STR[LANG][key]!==undefined) el.innerHTML = STR[LANG][key];
+
   });
 }
 function toggleLang(){
