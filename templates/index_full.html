@@ -132,25 +132,59 @@
         <button id="btnJSON" class="bg-gray-600 text-white px-4 py-2 rounded-xl hover:bg-gray-700" data-i18n="json">⬇️ Descargar JSON</button>
       </div>
     </div>
-    
-    <footer>
-      <hr class="my-2"/>
-      <p class="text-sm mt-3"><strong>💖 ¿Te gusta esta app? Podés invitarme un café:</strong></p>
-      <div style="display:flex; justify-content:center; gap: 1rem; flex-wrap:wrap; margin-top: 0.5rem;">
-        <a href="https://cafecito.app/marianobiotico" target="_blank" rel="noopener">
-          <img src="https://cdn.cafecito.app/imgs/buttons/button_1.png" alt="Invitame un café en cafecito.app" style="height:48px; border-radius:6px;">
-        </a>
-        <a href="https://www.buymeacoffee.com/marianobiotico" target="_blank" rel="noopener">
-          <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" style="height:48px; border-radius:6px;">
-        </a>
-      </div>
-      <small style="display:block; margin-top:1rem;">
-        Analizador de Alineación Politica • 2025 —
-        <a href="auditoria.html" target="_blank">🛡 Auditoría</a> •
-        <a href="legal.html" target="_blank">📄 Términos</a> •
-        <a href="politica.html" target="_blank">🔐 Privacidad</a>
-      </small>
-    </footer>
+<footer class="text-center text-xs text-gray-500 dark:text-gray-400 mt-6 space-y-2">
+  <!-- Línea 1: Donaciones + redes sociales compactas -->
+  <div class="flex flex-wrap justify-center items-center gap-2">
+    <span data-i18n="coffee">💖 ¿Te gusta esta app?</span>
+    <a href="https://cafecito.app/marianobiotico" target="_blank" class="underline hover:text-blue-400">Cafecito</a>
+    <a href="https://www.buymeacoffee.com/marianobiotico" target="_blank" class="underline hover:text-yellow-500">BuyMeACoffee</a>
+    <a href="https://github.com/electrobiotica" target="_blank" title="GitHub" class="hover:text-white">
+      <svg class="inline w-4 h-4" fill="currentColor" viewBox="0 0 16 16"> <path d="M8 0C3.58 0 0 3.58 0 8a8.01 8.01 0 005.47 7.59c.4.07.55-.17.55-.38 
+        0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
+        0-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95
+        0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.1 0 0 .67-.21 2.2.82a7.65 7.65 0 012-.27c.68 0 1.36.09 
+        2 .27 1.53-1.03 2.2-.82 2.2-.82.44 1.09.16 1.9.08 2.1.51.56.82 1.27.82 2.15 
+        0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 
+        0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+    </a>
+    <a href="https://instagram.com/marianobiotico" target="_blank" title="Instagram" class="hover:text-pink-500">
+      <svg class="inline w-4 h-4" fill="currentColor" viewBox="0 0 448 512"> <path d="M224 202.66A53.34 53.34 0 1 0 277.34 256 53.38 53.38 0 0 0 224 202.66Zm124.71 
+        7.09a54 54 0 0 0-30.06-30.06c-20.75-8.23-70.1-6.35-93.64-6.35s-72.89-1.88-93.64 
+        6.35a54 54 0 0 0-30.06 30.06c-8.23 20.75-6.35 70.1-6.35 93.64s-1.88 72.89 6.35 
+        93.64a54 54 0 0 0 30.06 30.06c20.75 8.23 70.1 6.35 93.64 6.35s72.89 1.88 
+        93.64-6.35a54 54 0 0 0 30.06-30.06c8.23-20.75 6.35-70.1 6.35-93.64s1.88-72.89-6.35-93.64ZM224 
+        338a82 82 0 1 1 82-82 82.09 82.09 0 0 1-82 82Zm85.33-148.2a19.2 19.2 0 1 1 19.2-19.2 
+        19.21 19.21 0 0 1-19.2 19.2ZM398.8 80A80.13 80.13 0 0 0 368 51.2C344.6 
+        32 308.5 32 224 32s-120.6 0-144 19.2A80.13 80.13 0 0 0 49.2 80C32 103.4 
+        32 139.5 32 224s0 120.6 19.2 144A80.13 80.13 0 0 0 80 398.8c23.4 17.2 
+        59.5 17.2 144 17.2s120.6 0 144-19.2a80.13 80.13 0 0 0 30.8-30.8C416 
+        344.6 416 308.5 416 224s0-120.6-17.2-144Z"/></svg>
+    </a>
+    <a href="mailto:marianobiotico@gmail.com" title="Email" class="hover:text-blue-400">
+      <svg class="inline w-4 h-4" fill="currentColor" viewBox="0 0 512 512"><path d="M502.3 190.8L327.4 338.4c-15.2 13-35.6 20.5-56.4 20.5s-41.2-7.5-56.4-20.5L9.7 
+        190.8c-7.9-6.7-9-18.7-2.3-26.6l24.6-29.2c6.7-7.9 18.7-9 26.6-2.3L256 
+        312.5 453.4 132.7c7.9-6.7 19.9-5.6 26.6 2.3l24.6 29.2c6.8 7.9 5.7 19.9-2.3 26.6z"/></svg>
+    </a>
+    <a href="https://wa.me/549112728058" target="_blank" title="WhatsApp" class="hover:text-green-400">
+      <svg class="inline w-4 h-4" fill="currentColor" viewBox="0 0 448 512"><path d="M380.9 97.1C339-3.6 226.8-24.2 138.8 29.6 60.6 77.5 32.2 
+        176.2 71.6 255.5L24 452l199.3-46.9c78.7 31.4 168.1-5.1 
+        209.7-83.5 41.6-78.4 9.9-175.5-52.1-224.5zM232.3 361.2c-60.7 0-109.9-49.2-109.9-109.9 
+        0-60.7 49.2-109.9 109.9-109.9s109.9 49.2 109.9 109.9c0 60.7-49.2 109.9-109.9 109.9z"/></svg>
+    </a>
+  </div>
+
+  <!-- Línea 2: Enlaces legales -->
+  <div>
+    <span data-i18n="footer_title">Analizador de Alineación Política • 2025 —</span>
+    <a href="auditoria.html" target="_blank" data-i18n="audit" class="hover:underline">Auditoría</a> •
+    <a href="legal.html" target="_blank" data-i18n="terms" class="hover:underline">Términos</a> •
+    <a href="politica.html" target="_blank" data-i18n="privacy" class="hover:underline">Privacidad</a>
+  </div>
+</footer>
+
+
+
+  
   </div>
 
 <script>
@@ -160,15 +194,48 @@ let lastData = null;
 let lastUrl  = null;
 
 const STR = {
-  es: { title:"🧭 Analizador de Alineación Politica", analyze:"Analizar", detected:"🔍 Alineación política detectada",
-        left:"Izquierda", right:"Derecha", justif:"📄 Justificación", keywords:"📌 Palabras clave",
-        biased:"⚠️ Frases sesgadas", pdf:"📄 Exportar PDF", json:"⬇️ Descargar JSON",
-        analyzing:"Analizando...", invalid_url:"Por favor ingresa una URL válida", error:"Error" },
-  en: { title:"🧭 Political Alignment Analyzer", analyze:"Analyze", detected:"🔍 Detected political alignment",
-        left:"Left", right:"Right", justif:"📄 Justification", keywords:"📌 Keywords",
-        biased:"⚠️ Biased phrases", pdf:"📄 Export PDF", json:"⬇️ Download JSON",
-        analyzing:"Analyzing...", invalid_url:"Please enter a valid URL", error:"Error" }
+  es: {
+    title:"🧭 Analizador de Alineación Politica",
+    analyze:"Analizar",
+    detected:"🔍 Alineación política detectada",
+    left:"Izquierda",
+    right:"Derecha",
+    justif:"📄 Justificación",
+    keywords:"📌 Palabras clave",
+    biased:"⚠️ Frases sesgadas",
+    pdf:"📄 Exportar PDF",
+    json:"⬇️ Descargar JSON",
+    analyzing:"Analizando...",
+    invalid_url:"Por favor ingresa una URL válida",
+    error:"Error",
+    coffee:"💖 ¿Te gusta esta app? Podés invitarme un café:",
+    footer_title:"Analizador de Alineación Politica • 2025 —",
+    audit:"🛡 Auditoría",
+    terms:"📄 Términos",
+    privacy:"🔐 Privacidad"
+  },
+  en: {
+    title:"🧭 Political Alignment Analyzer",
+    analyze:"Analyze",
+    detected:"🔍 Detected political alignment",
+    left:"Left",
+    right:"Right",
+    justif:"📄 Justification",
+    keywords:"📌 Keywords",
+    biased:"⚠️ Biased phrases",
+    pdf:"📄 Export PDF",
+    json:"⬇️ Download JSON",
+    analyzing:"Analyzing...",
+    invalid_url:"Please enter a valid URL",
+    error:"Error",
+    coffee:"💖 Enjoying this app? Buy me a coffee:",
+    footer_title:"Political Alignment Analyzer • 2025 —",
+    audit:"🛡 Audit",
+    terms:"📄 Terms",
+    privacy:"🔐 Privacy"
+  }
 };
+
 
 function applyLang() {
   document.documentElement.lang = LANG;
@@ -319,3 +386,4 @@ applyLang();
 </script>
 </body>
 </html>
+
