@@ -7,6 +7,8 @@ from datetime import datetime
 
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
+if not openai.api_key:
+    raise RuntimeError('❌ OPENAI_API_KEY no configurada')
 
 app = Flask(__name__, template_folder="templates")
 
@@ -74,7 +76,7 @@ TEXTO:
 '''
 
         def pedir_json(prompt_text):
-            resp = client.chat.completions.create(
+            resp = openai.chat.completions.create(
                 model="gpt-4o",
                 messages=[{"role": "user", "content": prompt_text}],
                 temperature=0.0,
@@ -131,11 +133,11 @@ TEXTO:
     except Exception as e:
         import traceback
         traceback.print_exc()
+        print('❌ ERROR EN /analizar:', e)
         return jsonify({'error': str(e)}), 500
-
-import traceback
-traceback.print_exc()
-print("❌ ERROR:", e)
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5050))
