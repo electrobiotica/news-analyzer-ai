@@ -42,7 +42,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="title">Alineador Político</title>
+  <title data-i18n="title">Analizador de Alineación Politica</title>
 
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -81,7 +81,7 @@
 <body class="min-h-screen flex items-center justify-center px-4">
   <div class="w-full max-w-2xl card rounded-2xl shadow-xl p-8 space-y-6">
     <div class="flex justify-between items-center">
-      <h1 class="text-2xl font-semibold" data-i18n="title">🧭 Alineador Político</h1>
+      <h1 class="text-2xl font-semibold" data-i18n="title">🧭 Analizador de Alineación Politica</h1>
       <div class="flex gap-2">
         <button id="btnDark" class="text-sm px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 switch" title="Dark/Light">🌙</button>
         <button id="btnLang" class="text-sm px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 switch" title="ES/EN">🌐</button>
@@ -145,7 +145,7 @@
         </a>
       </div>
       <small style="display:block; margin-top:1rem;">
-        Analizador Legal Multicontratos • 2025 —
+        Analizador de Alineación Politica • 2025 —
         <a href="auditoria.html" target="_blank">🛡 Auditoría</a> •
         <a href="legal.html" target="_blank">📄 Términos</a> •
         <a href="politica.html" target="_blank">🔐 Privacidad</a>
@@ -160,7 +160,7 @@ let lastData = null;
 let lastUrl  = null;
 
 const STR = {
-  es: { title:"🧭 Alineador Político", analyze:"Analizar", detected:"🔍 Alineación política detectada",
+  es: { title:"🧭 Analizador de Alineación Politica", analyze:"Analizar", detected:"🔍 Alineación política detectada",
         left:"Izquierda", right:"Derecha", justif:"📄 Justificación", keywords:"📌 Palabras clave",
         biased:"⚠️ Frases sesgadas", pdf:"📄 Exportar PDF", json:"⬇️ Descargar JSON",
         analyzing:"Analizando...", invalid_url:"Por favor ingresa una URL válida", error:"Error" },
