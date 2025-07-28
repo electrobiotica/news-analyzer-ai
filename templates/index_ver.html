@@ -1,47 +1,104 @@
-
 <!DOCTYPE html>
 <html lang="es" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="title">🧭 Analizador de Tendencia Política</title>
+  <title data-i18n="title">Alineador Político</title>
 
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <style>
-    body { background:#f3f4f6; color:#1f2937; transition:background .2s,color .2s; }
-    body.dark{ background:#111827; color:#f9fafb; }
-    .card{ background:#ffffff; color:#1f2937; transition:background .2s,color .2s; }
-    body.dark .card{ background:#1f2937; color:#f9fafb; }
+    body {
+      background: #f3f4f6;
+      color: #1f2937;
+      transition: background .2s, color .2s;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-    .tag{ display:inline-block; background:#e5e7eb; padding:2px 8px; margin:2px; border-radius:12px; font-size:12px; }
-    body.dark .tag{ background:#374151; color:#f3f4f6; }
+    body.dark {
+      background: #111827;
+      color: #f9fafb;
+    }
 
-    .resaltado{ background:yellow; font-weight:bold; }
-    body.dark .resaltado{ background:#facc15; color:#111827; }
+    .card {
+      background: #ffffff;
+      color: #1f2937;
+      transition: background .2s, color .2s;
+    }
 
-    .switch{ cursor:pointer; }
+    body.dark .card {
+      background: #1f2937;
+      color: #f9fafb;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e5e7eb;
+      padding: 2px 8px;
+      margin: 2px;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+
+    body.dark .tag {
+      background: #374151;
+      color: #f3f4f6;
+    }
+
+    .resaltado {
+      background: yellow;
+      font-weight: bold;
+    }
+
+    body.dark .resaltado {
+      background: #facc15;
+      color: #111827;
+    }
+
+    .switch {
+      cursor: pointer;
+    }
 
     body.dark input[type="text"],
     body.dark textarea,
     body.dark select {
-      background:#374151;
-      color:#f9fafb;
-      border-color:#4b5563;
+      background: #374151;
+      color: #f9fafb;
+      border-color: #4b5563;
     }
-    body.dark input::placeholder{
-      color:#9ca3af;
+
+    body.dark input::placeholder {
+      color: #9ca3af;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      background: #f3f4f6;
+      color: #6b7280;
+      padding: 10px;
+      font-size: 14px;
+      z-index: 50;
+    }
+
+    body.dark footer {
+      background: #111827;
+      color: #9ca3af;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
-
-  <main class="flex-grow flex items-center justify-center px-4">
+<body>
+  <main class="flex-1 flex items-center justify-center px-4 pb-24">
     <div class="w-full max-w-2xl card rounded-2xl shadow-xl p-8 space-y-6">
       <div class="flex justify-between items-center">
-        <h1 class="text-2xl font-semibold" data-i18n="title">🧭 Analizador de Tendencia Política</h1>
+        <h1 class="text-2xl font-semibold" data-i18n="title">🧭 Alineador Político</h1>
         <div class="flex gap-2">
           <button id="btnDark" class="text-sm px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 switch" title="Dark/Light">🌙</button>
           <button id="btnLang" class="text-sm px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 switch" title="ES/EN">🌐</button>
@@ -55,7 +112,7 @@
 
       <div id="resultado" class="hidden space-y-6">
         <div id="reporte">
-          <h2 class="text-lg font-medium" data-i18n="detected"🧭 Analizador de Tendencia Política</h2>
+          <h2 class="text-lg font-medium" data-i18n="detected">🔍 Alineación política detectada</h2>
           <div class="flex flex-col gap-3">
             <div>
               <p data-i18n="left">Izquierda</p>
@@ -95,206 +152,171 @@
     </div>
   </main>
 
-<footer class="w-full text-center p-4 text-sm">
-  <hr class="my-2"/>
-  <p class="text-sm mt-3"><strong>💖 ¿Te gusta esta app?</strong> Podés invitarme un café o ver más de mis proyectos:</p>
-  
-  <div class="flex justify-center gap-4 flex-wrap mt-2">
-<a href="https://cafecito.app/marianobiotico" target="_blank" rel="noopener">
-  <img src="https://cdn.cafecito.app/imgs/buttons/button_1.png" alt="Cafecito" class="h-8 rounded">
-</a>
-<a href="https://www.buymeacoffee.com/marianobiotico" target="_blank" rel="noopener">
-  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" class="h-8 rounded">
-</a>
- <a href="https://github.com/electrobiotica" target="_blank" rel="noopener"
-     class="inline-flex items-center px-3 py-1 bg-gray-1000 dark:bg-gray-700 text-sm rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.94.58.11.79-.25.79-.56v-2.13c-3.2.7-3.87-1.54-3.87-1.54-.52-1.31-1.27-1.66-1.27-1.66-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.67 1.24 3.32.95.1-.74.4-1.24.73-1.53-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.17-3.1-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.18a10.94 10.94 0 0 1 5.74 0C17.07 5.5 18 5.81 18 5.81c.62 1.57.23 2.73.11 3.02.73.81 1.17 1.84 1.17 3.1 0 4.43-2.69 5.41-5.25 5.69.42.36.77 1.08.77 2.18v3.24c0 .31.21.68.8.56A10.51 10.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/>
-    </svg>
-    GitHub
-  </a>
+  <footer>
+    © 2025 Alineador Político • Hecho con 🧠 y 🧭
+  </footer>
 
+  <script>
+    let LANG = localStorage.getItem("lang") || (navigator.language.startsWith("es") ? "es" : "en");
+    let DARK = localStorage.getItem("dark") === "true";
+    let lastData = null;
+    let lastUrl  = null;
 
-  </div>
+    const STR = {
+      es: { title:"🧭 Alineador Político", analyze:"Analizar", detected:"🔍 Alineación política detectada",
+            left:"Izquierda", right:"Derecha", justif:"📄 Justificación", keywords:"📌 Palabras clave",
+            biased:"⚠️ Frases sesgadas", pdf:"📄 Exportar PDF", json:"⬇️ Descargar JSON",
+            analyzing:"Analizando...", invalid_url:"Por favor ingresa una URL válida", error:"Error" },
+      en: { title:"🧭 Political Alignment Analyzer", analyze:"Analyze", detected:"🔍 Detected political alignment",
+            left:"Left", right:"Right", justif:"📄 Justification", keywords:"📌 Keywords",
+            biased:"⚠️ Biased phrases", pdf:"📄 Export PDF", json:"⬇️ Download JSON",
+            analyzing:"Analyzing...", invalid_url:"Please enter a valid URL", error:"Error" }
+    };
 
-  <div class="mt-4">
-    <p class="text-xs opacity-80">🧑‍💻 Desarrollado por <a href="https://marianobiotico.pages.dev" target="_blank" class="underline">Mariano Biotico</a> — 2025</p>
-    <p class="text-xs opacity-80 mt-1">🌐 Código abierto, privacidad total. Sin cookies, sin rastreadores.</p>
-    <p class="text-xs opacity-80 mt-1">💡 Inspirado en la transparencia y el pensamiento crítico.</p>
-  </div>
+    function applyLang() {
+      document.documentElement.lang = LANG;
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (STR[LANG][key]) el.textContent = STR[LANG][key];
+      });
+      document.getElementById("url").placeholder = LANG === "es" ? "https://ejemplo.com" : "https://example.com";
+    }
 
-  <div class="mt-4 text-xs">
-    <a href="auditoria.html" target="_blank" class="mx-2">🛡 Auditoría</a>
-    <a href="legal.html" target="_blank" class="mx-2">📄 Términos</a>
-    <a href="politica.html" target="_blank" class="mx-2">🔐 Privacidad</a>
-  </div>
-</footer>
+    function cambiarIdioma() {
+      LANG = LANG === "es" ? "en" : "es";
+      localStorage.setItem("lang", LANG);
+      applyLang();
+      if (lastData) pintarResultado(lastData);
+    }
 
+    function applyDark() {
+      if (DARK) document.body.classList.add("dark");
+      else document.body.classList.remove("dark");
+      localStorage.setItem("dark", DARK);
+    }
 
+    function toggleModoOscuro() {
+      DARK = !DARK;
+      applyDark();
+    }
 
-<script>
-let LANG = localStorage.getItem("lang") || (navigator.language.startsWith("es") ? "es" : "en");
-let DARK = localStorage.getItem("dark") === "true";
-let lastData = null;
-let lastUrl  = null;
+    function pickLang(value){
+      if (typeof value === "string") return value;
+      if (Array.isArray(value)) return value;
+      if (value && typeof value === "object"){
+        return value[LANG] ?? value.es ?? value.en ?? Object.values(value)[0];
+      }
+      return "";
+    }
 
-const STR = {
-  es: { title:"🧭 Analizador de Tendencia Política", analyze:"Analizar", detected:"🔍 Alineación política detectada",
-        left:"Izquierda", right:"Derecha", justif:"📄 Justificación", keywords:"📌 Palabras clave",
-        biased:"⚠️ Frases sesgadas", pdf:"📄 Exportar PDF", json:"⬇️ Descargar JSON",
-        analyzing:"Analizando...", invalid_url:"Por favor ingresa una URL válida", error:"Error" },
-  en: { title:"🧭 Political Alignment Analyzer", analyze:"Analyze", detected:"🔍 Detected political alignment",
-        left:"Left", right:"Right", justif:"📄 Justification", keywords:"📌 Keywords",
-        biased:"⚠️ Biased phrases", pdf:"📄 Export PDF", json:"⬇️ Download JSON",
-        analyzing:"Analyzing...", invalid_url:"Please enter a valid URL", error:"Error" }
-};
+    function toArray(v){
+      if (Array.isArray(v)) return v;
+      if (!v || v === "") return [];
+      return [v];
+    }
 
-function applyLang() {
-  document.documentElement.lang = LANG;
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    if (STR[LANG][key]) el.textContent = STR[LANG][key];
-  });
-  document.getElementById("url").placeholder = LANG === "es" ? "https://ejemplo.com" : "https://example.com";
-}
-function cambiarIdioma() {
-  LANG = LANG === "es" ? "en" : "es";
-  localStorage.setItem("lang", LANG);
-  applyLang();
-  if (lastData) pintarResultado(lastData);
-}
-function applyDark() {
-  if (DARK) document.body.classList.add("dark");
-  else document.body.classList.remove("dark");
-  localStorage.setItem("dark", DARK);
-}
-function toggleModoOscuro() {
-  DARK = !DARK;
-  applyDark();
-}
+    async function analizar() {
+      const url = document.getElementById("url").value.trim();
+      if (!url) return alert(STR[LANG].invalid_url);
 
-/* Helpers */
-function pickLang(value){
-  if (typeof value === "string") return value;
-  if (Array.isArray(value)) return value;
-  if (value && typeof value === "object"){
-    return value[LANG] ?? value.es ?? value.en ?? Object.values(value)[0];
-  }
-  return "";
-}
-function toArray(v){
-  if (Array.isArray(v)) return v;
-  if (!v || v === "") return [];
-  return [v];
-}
+      lastUrl = url;
+      document.getElementById("resultado").classList.remove("hidden");
+      document.getElementById("justificacion").innerText = STR[LANG].analyzing;
 
-/* Analizar */
-async function analizar() {
-  const url = document.getElementById("url").value.trim();
-  if (!url) return alert(STR[LANG].invalid_url);
+      try {
+        const res = await fetch("/analizar", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url })
+        });
+        const data = await res.json();
+        if (data.error) throw new Error(data.error);
 
-  lastUrl = url;
-  document.getElementById("resultado").classList.remove("hidden");
-  document.getElementById("justificacion").innerText = STR[LANG].analyzing;
+        lastData = data;
+        pintarResultado(data);
+      } catch (e) {
+        document.getElementById("justificacion").innerText = STR[LANG].error + ": " + e.message;
+      }
+    }
 
-  try {
-    const res = await fetch("/analizar", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url })
-    });
-    const data = await res.json();
-    if (data.error) throw new Error(data.error);
+    function pintarResultado(data){
+      document.getElementById("barraIzquierda").style.width = data.alineacion.izquierda + "%";
+      document.getElementById("barraDerecha").style.width   = data.alineacion.derecha   + "%";
 
-    lastData = data;
-    pintarResultado(data);
-  } catch (e) {
-    document.getElementById("justificacion").innerText = STR[LANG].error + ": " + e.message;
-  }
-}
+      const justif = pickLang(data.justificacion) || "";
+      const frases = toArray(pickLang(data.frases_sesgadas));
+      const keys   = toArray(pickLang(data.keywords));
 
-/* Pintar */
-function pintarResultado(data){
-  document.getElementById("barraIzquierda").style.width = data.alineacion.izquierda + "%";
-  document.getElementById("barraDerecha").style.width   = data.alineacion.derecha   + "%";
+      let justifHTML = justif;
+      frases.forEach(f => {
+        if (!f) return;
+        const safe = f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        justifHTML = justifHTML.replace(new RegExp(safe, "g"), `<span class='resaltado'>${f}</span>`);
+      });
+      document.getElementById("justificacion").innerHTML = justifHTML;
 
-  const justif = pickLang(data.justificacion) || "";
-  const frases = toArray(pickLang(data.frases_sesgadas));
-  const keys   = toArray(pickLang(data.keywords));
+      document.getElementById("keywords").innerHTML =
+        keys.map(k => `<span class="tag">${k}</span>`).join(" ");
 
-  let justifHTML = justif;
-  frases.forEach(f => {
-    if (!f) return;
-    const safe = f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    justifHTML = justifHTML.replace(new RegExp(safe, "g"), `<span class='resaltado'>${f}</span>`);
-  });
-  document.getElementById("justificacion").innerHTML = justifHTML;
+      document.getElementById("sesgadas").innerHTML =
+        frases.map(f => `<li>${f}</li>`).join("");
 
-  document.getElementById("keywords").innerHTML =
-    keys.map(k => `<span class="tag">${k}</span>`).join(" ");
+      applyLang();
+    }
 
-  document.getElementById("sesgadas").innerHTML =
-    frases.map(f => `<li>${f}</li>`).join("");
+    async function exportarPDF() {
+      const idioma = LANG;
+      const section = document.getElementById("resultado");
+      if (!section) return;
 
-  applyLang();
-}
+      const clone = section.cloneNode(true);
+      clone.style.background = "white";
+      clone.style.color = "black";
+      clone.style.padding = "20px";
+      clone.style.fontSize = "14px";
 
-/* PDF */
-async function exportarPDF() {
-  const idioma = LANG;
-  const section = document.getElementById("resultado");
-  if (!section) return;
+      const tempDiv = document.createElement("div");
+      tempDiv.appendChild(clone);
+      tempDiv.style.position = "fixed";
+      tempDiv.style.top = "-10000px";
+      document.body.appendChild(tempDiv);
 
-  const clone = section.cloneNode(true);
-  clone.style.background = "white";
-  clone.style.color = "black";
-  clone.style.padding = "20px";
-  clone.style.fontSize = "14px";
+      try {
+        await html2pdf()
+          .from(clone)
+          .set({
+            margin: 0.5,
+            filename: `analisis_politico_${idioma}.pdf`,
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+          })
+          .save();
+      } catch (e) {
+        console.error("❌ Error al exportar PDF:", e);
+      }
 
-  const tempDiv = document.createElement("div");
-  tempDiv.appendChild(clone);
-  tempDiv.style.position = "fixed";
-  tempDiv.style.top = "-10000px";
-  document.body.appendChild(tempDiv);
+      document.body.removeChild(tempDiv);
+    }
 
-  try {
-    await html2pdf()
-      .from(clone)
-      .set({
-        margin: 0.5,
-        filename: `analisis_politico_${idioma}.pdf`,
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-      })
-      .save();
-  } catch (e) {
-    console.error("❌ Error al exportar PDF:", e);
-  }
+    function exportarJSON() {
+      if (!lastData) return;
+      const blob = new Blob([JSON.stringify(lastData, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `analisis_${LANG}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
 
-  document.body.removeChild(tempDiv);
-}
+    document.getElementById("btnAnalizar").addEventListener("click", analizar);
+    document.getElementById("btnPDF").addEventListener("click", exportarPDF);
+    document.getElementById("btnJSON").addEventListener("click", exportarJSON);
+    document.getElementById("btnDark").addEventListener("click", toggleModoOscuro);
+    document.getElementById("btnLang").addEventListener("click", cambiarIdioma);
 
-/* JSON */
-function exportarJSON() {
-  if (!lastData) return;
-  const blob = new Blob([JSON.stringify(lastData, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `analisis_${LANG}.json`;
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
-/* Init */
-document.getElementById("btnAnalizar").addEventListener("click", analizar);
-document.getElementById("btnPDF").addEventListener("click", exportarPDF);
-document.getElementById("btnJSON").addEventListener("click", exportarJSON);
-document.getElementById("btnDark").addEventListener("click", toggleModoOscuro);
-document.getElementById("btnLang").addEventListener("click", cambiarIdioma);
-
-applyDark();
-applyLang();
-</script>
+    applyDark();
+    applyLang();
+  </script>
 </body>
 </html>
