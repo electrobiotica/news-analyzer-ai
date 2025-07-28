@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">Auditoría del Algoritmo</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body{background:#f3f4f6;color:#1f2937;transition:background .2s,color .2s;}
+    body.dark{background:#111827;color:#f9fafb;}
+    .card{background:#ffffff;color:#1f2937;transition:background .2s,color .2s;}
+    body.dark .card{background:#1f2937;color:#f9fafb;}
+    .switch{cursor:pointer;}
+    body.dark a{color:#60a5fa;}
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4">
+  <div class="w-full max-w-3xl card rounded-2xl shadow-xl p-8 space-y-6">
+    <header class="flex justify-between items-center">
+      <h1 class="text-2xl font-semibold" data-i18n="title">🔍 Auditoría del Algoritmo</h1>
+      <div class="flex gap-2">
+        <button id="btnDark" class="text-sm px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 switch" title="Dark/Light">🌙</button>
+        <button id="btnLang" class="text-sm px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 switch" title="ES/EN">🌐</button>
+      </div>
+    </header>
+
+    <section class="space-y-4 text-sm leading-relaxed">
+      <h2 class="text-lg font-medium" data-i18n="method">Metodología</h2>
+      <p data-i18n="method_p1">
+        El sistema calcula un porcentaje de alineación (izquierda/derecha) a partir de patrones léxicos, marcos narrativos y énfasis temáticos detectados en el texto.
+      </p>
+      <p data-i18n="method_p2">
+        Se utiliza un modelo de lenguaje (LLM) para generar un JSON con: alineación, justificación breve, palabras clave y frases potencialmente sesgadas.
+      </p>
+
+      <h2 class="text-lg font-medium mt-6" data-i18n="bias_check">Criterios de Sesgo</h2>
+      <ul class="list-disc pl-6 space-y-1" data-i18n="bias_list">
+        <li>Equilibrio porcentual (suma = 100%) y normalización si el modelo se desvía.</li>
+        <li>Lista de términos sesgados resaltados para inspección manual.</li>
+        <li>Posibilidad de revisión humana con parámetros transparentes.</li>
+      </ul>
+
+      <h2 class="text-lg font-medium mt-6" data-i18n="limits">Limitaciones</h2>
+      <p data-i18n="limits_p1">
+        El análisis depende del texto de origen: titulares sensacionalistas o citas fuera de contexto influyen en el resultado.
+      </p>
+      <p data-i18n="limits_p2">
+        El LLM puede cometer errores de interpretación; por ello se recomienda la verificación humana y la comparación con otras fuentes.
+      </p>
+
+      <h2 class="text-lg font-medium mt-6" data-i18n="contact">Transparencia y Contacto</h2>
+      <p data-i18n="contact_p1">
+        Para reportar sesgos o mejorar el modelo, escribinos. Se registran fecha y URL analizada, pero no se almacenan textos completos salvo para depuración local.
+      </p>
+    </section>
+
+    <footer class="flex justify-between text-xs mt-8">
+      <a href="/" ...>← Volver</a>
+
+      <div class="flex gap-3">
+        <a href="legal.html" class="underline" data-i18n="terms">Términos</a>
+        <a href="politica.html" class="underline" data-i18n="privacy">Privacidad</a>
+      </div>
+    </footer>
+  </div>
+
+<script>
+let LANG = localStorage.getItem("lang") || (navigator.language.startsWith("es") ? "es":"en");
+let DARK = localStorage.getItem("dark")==="true";
+
+const STR = {
+  es:{
+    title:"🔍 Auditoría del Algoritmo",
+    method:"Metodología",
+    method_p1:"El sistema calcula un porcentaje de alineación (izquierda/derecha) a partir de patrones léxicos, marcos narrativos y énfasis temáticos detectados en el texto.",
+    method_p2:"Se utiliza un modelo de lenguaje (LLM) para generar un JSON con: alineación, justificación breve, palabras clave y frases potencialmente sesgadas.",
+    bias_check:"Criterios de Sesgo",
+    bias_list:`<li>Uso de adjetivos calificativos con carga emocional.</li>
+<li>Construcciones que sugieren causalidad sin evidencia.</li>
+<li>Generalizaciones sobre actores políticos o sociales.</li>
+<li>Marcos semánticos ideológicos persistentes.</li>
+<li>Selección de fuentes con orientación explícita.</li>`,
+    limits:"Limitaciones",
+    limits_p1:"El análisis depende del texto de origen: titulares sensacionalistas o citas fuera de contexto influyen en el resultado.",
+    limits_p2:"El LLM puede cometer errores de interpretación; por ello se recomienda la verificación humana y la comparación con otras fuentes.",
+    contact:"Transparencia y Contacto",
+    contact_p1:"Para reportar sesgos o mejorar el modelo, escribinos. Se registran fecha y URL analizada, pero no se almacenan textos completos salvo para depuración local.",
+    back:"← Volver",
+    terms:"Términos",
+    privacy:"Privacidad"
+  },
+  en:{
+    title:"🔍 Algorithm Audit",
+    method:"Methodology",
+    method_p1:"The system computes a left/right alignment percentage based on lexical patterns, narrative frames and thematic emphasis detected in the text.",
+    method_p2:"A large language model (LLM) returns a JSON with: alignment, a short justification, keywords and potentially biased phrases.",
+    bias_check:"Bias Checks",
+    bias_list:`<li>Uso de adjetivos calificativos con carga emocional.</li>
+<li>Construcciones que sugieren causalidad sin evidencia.</li>
+<li>Generalizaciones sobre actores políticos o sociales.</li>
+<li>Marcos semánticos ideológicos persistentes.</li>
+<li>Selección de fuentes con orientación explícita.</li>`,
+    limits:"Limitations",
+    limits_p1:"The analysis depends on the source text: sensationalist headlines or decontextualized quotes affect the outcome.",
+    limits_p2:"The LLM may misinterpret content; human verification and comparison with other sources is recommended.",
+    contact:"Transparency & Contact",
+    contact_p1:"To report bias or improve the model, contact us. We log date and analyzed URL, but do not store full texts except for local debugging.",
+    back:"← Back",
+    terms:"Terms",
+    privacy:"Privacy"
+  }
+};
+function applyLang(){
+  document.documentElement.lang = LANG;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    if(STR[LANG][key]!==undefined) el.innerHTML = STR[LANG][key];
+
+  });
+}
+function toggleLang(){
+  LANG = LANG==="es"?"en":"es";
+  localStorage.setItem("lang",LANG);
+  applyLang();
+}
+function applyDark(){
+  if(DARK) document.body.classList.add("dark");
+  else document.body.classList.remove("dark");
+  localStorage.setItem("dark",DARK);
+}
+document.getElementById("btnLang").onclick = toggleLang;
+document.getElementById("btnDark").onclick = ()=>{DARK=!DARK;applyDark();};
+
+applyDark();
+applyLang();
+</script>
+</body>
+</html>
