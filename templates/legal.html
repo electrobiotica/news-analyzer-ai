@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">Términos y Condiciones</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body{background:#f3f4f6;color:#1f2937;transition:background .2s,color .2s;}
+    body.dark{background:#111827;color:#f9fafb;}
+    .card{background:#ffffff;color:#1f2937;transition:background .2s,color .2s;}
+    body.dark .card{background:#1f2937;color:#f9fafb;}
+    .switch{cursor:pointer;}
+    body.dark a{color:#60a5fa;}
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4">
+  <div class="w-full max-w-3xl card rounded-2xl shadow-xl p-8 space-y-6">
+    <header class="flex justify-between items-center">
+      <h1 class="text-2xl font-semibold" data-i18n="title">📜 Términos y Condiciones</h1>
+      <div class="flex gap-2">
+        <button id="btnDark" class="text-sm px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 switch">🌙</button>
+        <button id="btnLang" class="text-sm px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 switch">🌐</button>
+      </div>
+    </header>
+
+    <section class="space-y-4 text-sm leading-relaxed">
+      <h2 class="text-lg font-medium" data-i18n="use">Uso del Servicio</h2>
+      <p data-i18n="use_p1">
+        La herramienta brinda un análisis automático orientativo. El resultado no constituye asesoramiento legal, político ni periodístico.
+      </p>
+
+      <h2 class="text-lg font-medium mt-6" data-i18n="respons">Responsabilidades</h2>
+      <p data-i18n="respons_p1">
+        El usuario es responsable del uso de la información generada. El desarrollador no garantiza exactitud ni ausencia de errores.
+      </p>
+
+      <h2 class="text-lg font-medium mt-6" data-i18n="mods">Modificaciones y Disponibilidad</h2>
+      <p data-i18n="mods_p1">
+        El servicio puede cambiar o interrumpirse sin previo aviso. Estos términos pueden actualizarse; la versión vigente estará publicada aquí.
+      </p>
+
+      <h2 class="text-lg font-medium mt-6" data-i18n="law">Ley Aplicable</h2>
+      <p data-i18n="law_p1">
+        Se aplican las leyes de la República Argentina (o la jurisdicción que corresponda al desarrollador). Cualquier disputa se resolverá en tribunales competentes.
+      </p>
+    </section>
+
+    <footer class="flex justify-between text-xs mt-8">
+      <a href="/" ...>← Volver</a>
+      <div class="flex gap-3">
+        <a href="politica.html" class="underline" data-i18n="privacy">Privacidad</a>
+        <a href="auditoria.html" class="underline" data-i18n="audit">Auditoría</a>
+      </div>
+    </footer>
+  </div>
+
+<script>
+let LANG = localStorage.getItem("lang") || (navigator.language.startsWith("es") ? "es":"en");
+let DARK = localStorage.getItem("dark")==="true";
+
+const STR = {
+  es:{
+    title:"📜 Términos y Condiciones",
+    use:"Uso del Servicio",
+    use_p1:"La herramienta brinda un análisis automático orientativo. El resultado no constituye asesoramiento legal, político ni periodístico.",
+    respons:"Responsabilidades",
+    respons_p1:"El usuario es responsable del uso de la información generada. El desarrollador no garantiza exactitud ni ausencia de errores.",
+    mods:"Modificaciones y Disponibilidad",
+    mods_p1:"El servicio puede cambiar o interrumpirse sin previo aviso. Estos términos pueden actualizarse; la versión vigente estará publicada aquí.",
+    law:"Ley Aplicable",
+    law_p1:"Se aplican las leyes de la República Argentina (o la jurisdicción que corresponda al desarrollador). Cualquier disputa se resolverá en tribunales competentes.",
+    back:"← Volver",
+    privacy:"Privacidad",
+    audit:"Auditoría"
+  },
+  en:{
+    title:"📜 Terms & Conditions",
+    use:"Service Use",
+    use_p1:"This tool provides an indicative automated analysis. The result is not legal, political or journalistic advice.",
+    respons:"Responsibilities",
+    respons_p1:"You are responsible for how you use the generated information. The developer does not guarantee accuracy or error-free results.",
+    mods:"Changes & Availability",
+    mods_p1:"The service may change or be discontinued without notice. These terms may be updated; the current version will be published here.",
+    law:"Governing Law",
+    law_p1:"The laws of the Argentine Republic (or the developer’s jurisdiction) apply. Any dispute will be resolved in the competent courts.",
+    back:"← Back",
+    privacy:"Privacy",
+    audit:"Audit"
+  }
+};
+function applyLang(){
+  document.documentElement.lang = LANG;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    if(STR[LANG][key]!==undefined) el.textContent = STR[LANG][key];
+  });
+}
+function toggleLang(){
+  LANG = LANG==="es"?"en":"es";
+  localStorage.setItem("lang",LANG);
+  applyLang();
+}
+function applyDark(){
+  if(DARK) document.body.classList.add("dark");
+  else document.body.classList.remove("dark");
+  localStorage.setItem("dark",DARK);
+}
+document.getElementById("btnLang").onclick = toggleLang;
+document.getElementById("btnDark").onclick = ()=>{DARK=!DARK;applyDark();};
+
+applyDark();
+applyLang();
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">Política de Privacidad</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body{background:#f3f4f6;color:#1f2937;transition:background .2s,color .2s;}
+    body.dark{background:#111827;color:#f9fafb;}
+    .card{background:#ffffff;color:#1f2937;transition:background .2s,color .2s;}
+    body.dark .card{background:#1f2937;color:#f9fafb;}
+    .switch{cursor:pointer;}
+    body.dark a{color:#60a5fa;}
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4">
+  <div class="w-full max-w-3xl card rounded-2xl shadow-xl p-8 space-y-6">
+    <header class="flex justify-between items-center">
+      <h1 class="text-2xl font-semibold" data-i18n="title">🔒 Política de Privacidad</h1>
+      <div class="flex gap-2">
+        <button id="btnDark" class="text-sm px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 switch">🌙</button>
+        <button id="btnLang" class="text-sm px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 switch">🌐</button>
+      </div>
+    </header>
+
+    <section class="space-y-4 text-sm leading-relaxed">
+      <h2 class="text-lg font-medium" data-i18n="data">Datos que se procesan</h2>
+      <p data-i18n="data_p1">
+        Solo se envía al modelo de IA el texto del artículo (recortado) y se guarda la URL y fecha de análisis. No almacenamos textos completos en servidores externos.
+      </p>
+
+      <h2 class="text-lg font-medium mt-6" data-i18n="purp">Finalidad</h2>
+      <p data-i18n="purp_p1">
+        El objetivo es ofrecer una medición orientativa de sesgo político. Los datos se usan exclusivamente para generar la respuesta y depurar errores localmente.
+      </p>
+
+      <h2 class="text-lg font-medium mt-6" data-i18n="third">Terceros</h2>
+      <p data-i18n="third_p1">
+        Se utiliza un servicio de IA (OpenAI u otro) para procesar el texto. Consultá su propia política. No vendemos ni cedemos tus datos.
+      </p>
+
+      <h2 class="text-lg font-medium mt-6" data-i18n="rights">Tus derechos</h2>
+      <p data-i18n="rights_p1">
+        Podés solicitar que no se guarde ninguna información o pedir la eliminación de logs locales. Contactanos para ejercer estos derechos.
+      </p>
+    </section>
+
+    <footer class="flex justify-between text-xs mt-8">
+      <a href="/" ...>← Volver</a>
+      <div class="flex gap-3">
+        <a href="legal.html" class="underline" data-i18n="terms">Términos</a>
+        <a href="auditoria.html" class="underline" data-i18n="audit">Auditoría</a>
+      </div>
+    </footer>
+  </div>
+
+<script>
+let LANG = localStorage.getItem("lang") || (navigator.language.startsWith("es") ? "es":"en");
+let DARK = localStorage.getItem("dark")==="true";
+
+const STR = {
+  es:{
+    title:"🔒 Política de Privacidad",
+    data:"Datos que se procesan",
+    data_p1:"Solo se envía al modelo de IA el texto del artículo (recortado) y se guarda la URL y fecha de análisis. No almacenamos textos completos en servidores externos.",
+    purp:"Finalidad",
+    purp_p1:"El objetivo es ofrecer una medición orientativa de sesgo político. Los datos se usan exclusivamente para generar la respuesta y depurar errores localmente.",
+    third:"Terceros",
+    third_p1:"Se utiliza un servicio de IA (OpenAI u otro) para procesar el texto. Consultá su propia política. No vendemos ni cedemos tus datos.",
+    rights:"Tus derechos",
+    rights_p1:"Podés solicitar que no se guarde ninguna información o pedir la eliminación de logs locales. Contactanos para ejercer estos derechos.",
+    back:"← Volver",
+    terms:"Términos",
+    audit:"Auditoría"
+  },
+  en:{
+    title:"🔒 Privacy Policy",
+    data:"Data Processed",
+    data_p1:"Only the (trimmed) article text is sent to the AI model, and the URL + analysis date are stored. Full texts are not stored on external servers.",
+    purp:"Purpose",
+    purp_p1:"The goal is to provide an indicative measurement of political bias. Data are used only to generate the response and locally debug errors.",
+    third:"Third Parties",
+    third_p1:"An AI service (OpenAI or another) is used to process text. Check its own policy. We do not sell or transfer your data.",
+    rights:"Your Rights",
+    rights_p1:"You may request that no data be stored or ask for local logs to be deleted. Contact us to exercise these rights.",
+    back:"← Back",
+    terms:"Terms",
+    audit:"Audit"
+  }
+};
+function applyLang(){
+  document.documentElement.lang = LANG;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    if(STR[LANG][key]!==undefined) el.textContent = STR[LANG][key];
+  });
+}
+function toggleLang(){
+  LANG = LANG==="es"?"en":"es";
+  localStorage.setItem("lang",LANG);
+  applyLang();
+}
+function applyDark(){
+  if(DARK) document.body.classList.add("dark");
+  else document.body.classList.remove("dark");
+  localStorage.setItem("dark",DARK);
+}
+document.getElementById("btnLang").onclick = toggleLang;
+document.getElementById("btnDark").onclick = ()=>{DARK=!DARK;applyDark();};
+
+applyDark();
+applyLang();
+</script>
+</body>
+</html>
